@@ -1,0 +1,20 @@
+.lunch__category-block {
+  margin: 0 0 50px;
+}
+
+.lunch__category {
+  float: left;
+  margin: 0 30px 30px 0;
+}
+
+.lunch__btn {
+  display: block;
+  width: 300px;
+  height: 80px;
+  margin: 50px auto;
+  border: 0;
+  background-color: #03A9F4;
+  color: #fff;
+  font-weight: bold;
+  font-size: 2em;
+}
