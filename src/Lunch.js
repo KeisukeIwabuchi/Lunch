@@ -246,7 +246,9 @@ class Lunch extends Component {
     return (
       <div className="lunch">
         <h1>今日のお昼ごはん</h1>
-        { list }
+        <div className="lunch__category-block">
+          { list }
+        </div>
         <button className="lunch__btn"
                 onClick={() => this.roulette()}>
           選ぶ
