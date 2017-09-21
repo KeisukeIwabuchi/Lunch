@@ -17,4 +17,9 @@
   color: #fff;
   font-weight: bold;
   font-size: 2em;
+  cursor: pointer;
+}
+
+.lunch__btn:hover {
+  background-color: #01579B;
 }
