@@ -220,19 +220,14 @@ class Lunch extends Component {
 
   getName() {
     if(this.state.result) {
-      return <div>{'今日は「' + this.state.result + '」に行こう'}</div>;
+      return <div>今日は「{this.getLink()}」に行こう</div>;
     }
     return;
   }
 
   getLink() {
     if(this.state.result_url) {
-      return (
-        <div>
-          <span>食べログ: </span>
-          <a href={this.state.result_url}>{this.state.result}</a>
-        </div>
-      );
+      return <a href={this.state.result_url}>{this.state.result}</a>;
     }
     return;
   }
@@ -255,7 +250,6 @@ class Lunch extends Component {
         </button>
         <div className="lunch__result">
           {this.getName()}
-          {this.getLink()}
         </div>
       </div>
     );
