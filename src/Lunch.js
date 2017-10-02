@@ -1,17 +1,7 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
+import Category from './Category.js';
 import './css/Lunch.css';
-
-function Category(props) {
-  return (
-    <div className="lunch__category">
-      <input type="checkbox"
-             id={'category' + props.value.id}
-             onClick={props.onClick}
-             defaultChecked={props.value.selected}/>
-      <label htmlFor={'category' + props.value.id}>{props.value.name}</label>
-    </div>
-  );
-}
 
 class Lunch extends Component {
   constructor() {
@@ -191,6 +181,27 @@ class Lunch extends Component {
       result_url: ''
     }
   }
+
+  // componentDidMount() {
+  //   $.ajax({
+  //     url: this.props.url,
+  //     data: {
+  //       q: "select title from feed where url = '" + this.props.target + "'",
+  //       format: "json"
+  //     },
+  //     type: 'GET',
+  //     dataType: 'json',
+  //     success: function(res) {
+  //       for (var i in res.query.results.entry) {
+  //         console.log(res.query.results.entry[i].title);
+  //       }
+  //       this.setState({entry: res.query.results.entry});
+  //     }.bind(this),
+  //     error: function(xhr, status, err) {
+  //       console.log(this.props.targetURL, status, err.toString());
+  //     }.bind(this)
+  //   });
+  // }
 
   renderCategory(i) {
     return <Category key={this.state.category[i].name}
