@@ -26,7 +26,6 @@ class Lunch extends Component {
   }
 
   componentDidMount() {
-    console.log('hoge');
     $.ajax({
       url: 'data.json',
       data: {
