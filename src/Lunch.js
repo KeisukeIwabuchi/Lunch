@@ -64,8 +64,6 @@ class Lunch extends Component {
     var date = new Date();
     var day_of_week = date.getDay();
 
-    day_of_week = 0;
-
     for(var i in this.state.data) {
       category_id = this.state.data[i].category;
       if(this.state.category[category_id - 1].selected === true &&
