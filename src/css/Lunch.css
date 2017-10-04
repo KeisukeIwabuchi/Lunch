@@ -1,3 +1,9 @@
+.lunch__title {
+  text-align: center; }
+
+.lunch__restaurant-count {
+  text-align: right; }
+
 .lunch__category-block {
   margin: 0 0 50px; }
 
@@ -11,10 +17,12 @@
   height: 80px;
   margin: 50px auto;
   border: 0;
+  border-radius: 40px;
   background-color: #03A9F4;
   color: #fff;
   font-weight: bold;
   font-size: 2em;
-  cursor: pointer; }
+  cursor: pointer;
+  outline: 0; }
   .lunch__btn:hover {
     background-color: #01579B; }

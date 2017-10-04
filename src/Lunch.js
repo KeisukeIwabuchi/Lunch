@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import $ from 'jquery';
 import Category from './Category.js';
 import './css/Lunch.css';
 
@@ -21,27 +21,27 @@ class Lunch extends Component {
       ],
       data : [],
       result: '',
-      result_url: ''
+      result_url: '',
+      public_holiday: false
     }
   }
 
   componentDidMount() {
-    let url = 'https://keisukeiwabuchi.github.io/Lunch';
-    const api = axios.create({
-      baseURL: url,
-      headers: {
-        'ContentType': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
+    $.ajax({
+      url: 'data.json',
+      data: {
+        q: "select title from feed where url = 'data.json'",
+        format: "json"
       },
-      responseType: 'json'
+      type: 'GET',
+      dataType: 'json',
+      success: function(res) {
+        this.setState({data: res});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.log(status, err.toString());
+      }
     });
-    api.get('/data.json')
-         .then(function(response) {
-           for(var i in response) this.state.data.push(response[i]);
-         })
-         .catch(function(error) {
-           console.log('Error Occured!', error);
-         });
   }
 
   renderCategory(i) {
@@ -53,7 +53,9 @@ class Lunch extends Component {
   handleClick(i) {
     var value = this.state.category;
     value[i].selected = !value[i].selected;
-    this.setState({category: value});
+    this.setState((prevState) => (
+      {category: value}
+    ));
   }
 
   roulette() {
@@ -61,18 +63,23 @@ class Lunch extends Component {
     var category_id = 0;
     var date = new Date();
     var day_of_week = date.getDay();
+
+    day_of_week = 0;
+
     for(var i in this.state.data) {
       category_id = this.state.data[i].category;
       if(this.state.category[category_id - 1].selected === true &&
-         this.state.data[i].close === day_of_week) {
+         this.state.data[i].close.indexOf(day_of_week) === -1) {
         list.push(this.state.data[i]);
       }
     }
     var index = Math.floor(Math.random() * list.length);
-    this.setState({
-      result: list[index].name,
-      result_url: list[index].url
-    });
+    if(list.length > 0) {
+      this.setState({
+        result: list[index].name,
+        result_url: list[index].url
+      });
+    }
   }
 
   getName() {
@@ -97,7 +104,10 @@ class Lunch extends Component {
 
     return (
       <div className="lunch">
-        <h1>本日のお昼ごはん</h1>
+        <h1 className="lunch__title">本日のお昼ごはん</h1>
+        <div className="lunch__restaurant-count">
+          登録件数 : {this.state.data.length}件
+        </div>
         <div className="lunch__category-block">
           { list }
         </div>
