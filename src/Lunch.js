@@ -52,15 +52,21 @@ class Lunch extends Component {
   }
 
   handleClick(i) {
-    this.state.category[i].selected = !this.state.category[i].selected;
+    var value = this.state.category;
+    value[i].selected = !value[i].selected;
+    this.setState({category: value});
+    // this.state.category[i].selected = !this.state.category[i].selected;
   }
 
   roulette() {
     var list = [];
     var category_id = 0;
+    var date = new Date();
+    var day_of_week = date.getDay();
     for(var i in this.state.data) {
       category_id = this.state.data[i].category;
-      if(this.state.category[category_id - 1].selected === true) {
+      if(this.state.category[category_id - 1].selected === true &&
+         this.state.data[i].close === day_of_week) {
         list.push(this.state.data[i]);
       }
     }
