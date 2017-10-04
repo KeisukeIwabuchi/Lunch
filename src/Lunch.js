@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
+import axios from 'axios';
 import Category from './Category.js';
 import './css/Lunch.css';
 
@@ -26,23 +26,21 @@ class Lunch extends Component {
   }
 
   componentDidMount() {
-    $.ajax({
-      url: 'data.json',
-      data: {
-        q: "select title from feed where url = 'data.json'",
-        format: "json"
+    const api = axios.create({
+      baseURL: 'http://localhost:3000',
+      headers: {
+        'ContentType': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest'
       },
-      type: 'GET',
-      dataType: 'json',
-      success: function(res) {
-        for (var i in res) {
-          this.state.data.push(res[i]);
-        }
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(status, err.toString());
-      }.bind(this)
+      responseType: 'json'
     });
+    api.get('data.json')
+         .then(function(response) {
+           for(var i in response) this.state.data.push(response[i]);
+         })
+         .catch(function(error) {
+           console.log('Error Occured!', error);
+         });
   }
 
   renderCategory(i) {
@@ -55,7 +53,6 @@ class Lunch extends Component {
     var value = this.state.category;
     value[i].selected = !value[i].selected;
     this.setState({category: value});
-    // this.state.category[i].selected = !this.state.category[i].selected;
   }
 
   roulette() {
