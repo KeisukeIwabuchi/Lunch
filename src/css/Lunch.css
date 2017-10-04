@@ -25,9 +25,13 @@
   border-radius: 40px;
   background-color: #E64A19;
   color: #fff;
+  font-size: 40px;
   font-weight: bold;
-  font-size: 2em;
   outline: 0;
   cursor: pointer; }
   .lunch__btn:hover {
     background-color: #FF3D00; }
+  .lunch__btn .material-icons {
+    font-size: 34px;
+    font-weight: bold;
+    line-height: 40px; }

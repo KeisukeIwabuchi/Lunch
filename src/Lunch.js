@@ -102,8 +102,13 @@ class Lunch extends Component {
 
     return (
       <div className="lunch">
-        <h1 className="lunch__title">本日のお昼ごはん</h1>
+        <h1 className="lunch__title">
+          <i className="material-icons">restaurant</i>
+          本日のお昼ごはん
+          <i className="material-icons">local_cafe</i>
+        </h1>
         <div className="lunch__restaurant-count">
+          <i className="material-icons">flag</i>
           登録件数 : {this.state.data.length}件
         </div>
         <div className="lunch__category-block">
@@ -111,6 +116,7 @@ class Lunch extends Component {
         </div>
         <button className="lunch__btn"
                 onClick={() => this.roulette()}>
+          <i className="material-icons">cached</i>
           選ぶ
         </button>
         <div className="lunch__result">
