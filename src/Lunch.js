@@ -21,12 +21,12 @@ class Lunch extends Component {
       ],
       data : [],
       result: '',
-      result_url: ''
+      result_url: '',
+      public_holiday: false
     }
   }
 
   componentDidMount() {
-    console.log('hoge');
     $.ajax({
       url: 'data.json',
       data: {
@@ -36,13 +36,11 @@ class Lunch extends Component {
       type: 'GET',
       dataType: 'json',
       success: function(res) {
-        for (var i in res) {
-          this.state.data.push(res[i]);
-        }
+        this.setState({data: res});
       }.bind(this),
       error: function(xhr, status, err) {
         console.log(status, err.toString());
-      }.bind(this)
+      }
     });
   }
 
@@ -53,23 +51,33 @@ class Lunch extends Component {
   }
 
   handleClick(i) {
-    this.state.category[i].selected = !this.state.category[i].selected;
+    var value = this.state.category;
+    value[i].selected = !value[i].selected;
+    this.setState((prevState) => (
+      {category: value}
+    ));
   }
 
   roulette() {
     var list = [];
     var category_id = 0;
+    var date = new Date();
+    var day_of_week = date.getDay();
+
     for(var i in this.state.data) {
       category_id = this.state.data[i].category;
-      if(this.state.category[category_id - 1].selected === true) {
+      if(this.state.category[category_id - 1].selected === true &&
+         this.state.data[i].close.indexOf(day_of_week) === -1) {
         list.push(this.state.data[i]);
       }
     }
     var index = Math.floor(Math.random() * list.length);
-    this.setState({
-      result: list[index].name,
-      result_url: list[index].url
-    });
+    if(list.length > 0) {
+      this.setState({
+        result: list[index].name,
+        result_url: list[index].url
+      });
+    }
   }
 
   getName() {
@@ -94,12 +102,21 @@ class Lunch extends Component {
 
     return (
       <div className="lunch">
-        <h1>本日のお昼ごはん</h1>
+        <h1 className="lunch__title">
+          <i className="material-icons">restaurant</i>
+          本日のお昼ごはん
+          <i className="material-icons">local_cafe</i>
+        </h1>
+        <div className="lunch__restaurant-count">
+          <i className="material-icons">flag</i>
+          登録件数 : {this.state.data.length}件
+        </div>
         <div className="lunch__category-block">
           { list }
         </div>
         <button className="lunch__btn"
                 onClick={() => this.roulette()}>
+          <i className="material-icons">cached</i>
           選ぶ
         </button>
         <div className="lunch__result">

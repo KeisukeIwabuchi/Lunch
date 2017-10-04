@@ -1,6 +1,19 @@
 .lunch {
+  &__title {
+    text-align: center;
+  }
+
+  &__restaurant-count {
+    text-align: right;
+  }
+
   &__category-block {
-    margin: 0 0 50px;
+    display: inline-block;
+    margin: 50px 0 50px;
+    padding: 30px 30px 0;
+    border: 2px dotted #616161;
+    border-radius: 9px;
+    background-color: #eee;
   }
 
   &__category {
@@ -14,14 +27,22 @@
     height: 80px;
     margin: 50px auto;
     border: 0;
-    background-color: #03A9F4;
+    border-radius: 40px;
+    background-color: #E64A19;
     color: #fff;
+    font-size: 40px;
     font-weight: bold;
-    font-size: 2em;
+    outline: 0;
     cursor: pointer;
 
     &:hover {
-      background-color: #01579B;
+      background-color: #FF3D00;
+    }
+
+    .material-icons {
+      font-size: 34px;
+      font-weight: bold;
+      line-height: 40px;
     }
   }
 }
