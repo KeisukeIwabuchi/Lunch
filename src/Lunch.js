@@ -26,15 +26,16 @@ class Lunch extends Component {
   }
 
   componentDidMount() {
+    let url = 'https://keisukeiwabuchi.github.io/Lunch';
     const api = axios.create({
-      baseURL: 'http://localhost:3000',
+      baseURL: url,
       headers: {
         'ContentType': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
       },
       responseType: 'json'
     });
-    api.get('data.json')
+    api.get('/data.json')
          .then(function(response) {
            for(var i in response) this.state.data.push(response[i]);
          })
