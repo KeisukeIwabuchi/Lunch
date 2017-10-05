@@ -114,14 +114,14 @@ class Lunch extends Component {
         <div className="lunch__category-block">
           { list }
         </div>
+        <div className="lunch__result">
+          {this.getName()}
+        </div>
         <button className="lunch__btn"
                 onClick={() => this.roulette()}>
           <i className="material-icons">cached</i>
           選ぶ
         </button>
-        <div className="lunch__result">
-          {this.getName()}
-        </div>
       </div>
     );
   }

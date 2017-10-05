@@ -6,21 +6,24 @@
 
 .lunch__category-block {
   display: inline-block;
-  margin: 50px 0 50px;
-  padding: 30px 30px 0;
+  margin: 20px 0;
+  padding: 10px 10px 0;
   border: 2px dotted #616161;
   border-radius: 9px;
   background-color: #eee; }
 
 .lunch__category {
   float: left;
-  margin: 0 30px 30px 0; }
+  margin: 0 10px 10px 0; }
+
+.lunch__result {
+  margin: 0 0 20px; }
 
 .lunch__btn {
   display: block;
   width: 300px;
   height: 80px;
-  margin: 50px auto;
+  margin: 0 auto 50px;
   border: 0;
   border-radius: 40px;
   background-color: #E64A19;
@@ -35,3 +38,10 @@
     font-size: 34px;
     font-weight: bold;
     line-height: 40px; }
+
+@media (min-width: 750px) {
+  .lunch__category-block {
+    margin: 50px 0;
+    padding: 30px 30px 0; }
+  .lunch__category {
+    margin: 0 30px 30px 0; } }
