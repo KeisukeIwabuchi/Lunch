@@ -30,6 +30,12 @@
     "close": [0]
   },
   {
+    "name": "神勢。",
+    "category": 1,
+    "url": "https://tabelog.com/tokyo/A1310/A131004/13021646/",
+    "close": [-1]
+  },
+  {
     "name": "江戸銀食堂",
     "category": 2,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13114571/",
@@ -58,6 +64,24 @@
     "category": 2,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13167878/",
     "close": [0, 7]
+  },
+  {
+    "name": "みやび",
+    "category": 2,
+    "url": "https://tabelog.com/tokyo/A1310/A131004/13159939/",
+    "close": [0, 7]
+  },
+  {
+    "name": "バクバク",
+    "category": 2,
+    "url": "https://tabelog.com/tokyo/A1310/A131004/13135220/",
+    "close": [0]
+  },
+  {
+    "name": "とり多津",
+    "category": 2,
+    "url": "https://tabelog.com/tokyo/A1310/A131004/13180647/",
+    "close": [-1]
   },
   {
     "name": "中華料理 菜香",
@@ -136,6 +160,12 @@
     "category": 8,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13090103/",
     "close": [-1]
+  },
+  {
+    "name": "日乃屋",
+    "category": 8,
+    "url": "https://tabelog.com/tokyo/A1310/A131004/13183849/",
+    "close": [0, 7]
   },
   {
     "name": "蕎麦切 森の",
