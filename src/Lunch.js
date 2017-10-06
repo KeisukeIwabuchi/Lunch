@@ -94,6 +94,17 @@ class Lunch extends Component {
     return;
   }
 
+  getOpen() {
+    var count = 0;
+    var date = new Date();
+    var day_of_week = date.getDay();
+
+    for(var i = 0; i < this.state.data.length; i++) {
+      if(this.state.data[i].close.indexOf(day_of_week) === -1) count++;
+    }
+    return count;
+  }
+
   render() {
     var list = [];
     for(var i in this.state.category) {
@@ -109,7 +120,7 @@ class Lunch extends Component {
         </h1>
         <div className="lunch__restaurant-count">
           <i className="material-icons">flag</i>
-          登録件数 : {this.state.data.length}件
+          今日営業中のお店 : {this.getOpen()}件
         </div>
         <div className="lunch__category-block">
           { list }
