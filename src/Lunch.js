@@ -53,9 +53,7 @@ class Lunch extends Component {
   handleClick(i) {
     var value = this.state.category;
     value[i].selected = !value[i].selected;
-    this.setState((prevState) => (
-      {category: value}
-    ));
+    this.setState((prevState) => ({category: value}));
   }
 
   roulette() {
@@ -100,9 +98,18 @@ class Lunch extends Component {
     var day_of_week = date.getDay();
 
     for(var i = 0; i < this.state.data.length; i++) {
+      if(this.state.public_holiday === true) {
+        if(this.state.data[i].close.indexOf(7) !== -1) continue;
+      }
       if(this.state.data[i].close.indexOf(day_of_week) === -1) count++;
     }
     return count;
+  }
+
+  changeHoliday() {
+    var value = this.state.public_holiday;
+    value = !value;
+    this.setState((prevState) => ({public_holiday: value}));
   }
 
   render() {
@@ -121,6 +128,10 @@ class Lunch extends Component {
         <div className="lunch__restaurant-count">
           <i className="material-icons">flag</i>
           今日営業中のお店 : {this.getOpen()}件
+        </div>
+        <div className="lunch__restaurant-count">
+          <input type="checkbox" id="public-holiday" onClick={() => this.changeHoliday()}/>
+          <label htmlFor="public-holiday">祝日</label>
         </div>
         <div className="lunch__category-block">
           { list }
