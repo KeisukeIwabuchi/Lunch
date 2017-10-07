@@ -66,12 +66,6 @@
     "close": [0, 7]
   },
   {
-    "name": "みやび",
-    "category": 2,
-    "url": "https://tabelog.com/tokyo/A1310/A131004/13159939/",
-    "close": [0, 7]
-  },
-  {
     "name": "バクバク",
     "category": 2,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13135220/",
@@ -172,6 +166,12 @@
     "category": 9,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13018364/",
     "close": [0, 7]
+  },
+  {
+    "name": "手打そば 田奈部",
+    "category": 9,
+    "url": "https://tabelog.com/tokyo/A1310/A131004/13030099/",
+    "close": [0]
   },
   {
     "name": "二代目 甚八",
