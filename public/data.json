@@ -12,6 +12,12 @@
     "close": [0, 7]
   },
   {
+    "name": "家家家",
+    "category": 1,
+    "url": "https://tabelog.com/tokyo/A1310/A131004/13050309/",
+    "close": [-1]
+  },
+  {
     "name": "らーめん雅ノ屋",
     "category": 1,
     "url": "https://tabelog.com/tokyo/A1310/A131004/13113746/",
